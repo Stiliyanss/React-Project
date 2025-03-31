@@ -1,15 +1,15 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
 
-import Home from './components/Home';
-import About from './components/About';
-import Catalog from './components/Catalog';
-import Login from './components/Login';
-import Register from './components/Register';
-import Contact from './components/Contact';
+import Home from './components/home/Home';
+import About from './components/about/About';
+import Catalog from './components/catalog/Catalog';
+import Login from './components/login/Login';
+import Register from './components/register/Register';
+import Contact from './components/contact/Contact';
 
 function App() {
   return (
