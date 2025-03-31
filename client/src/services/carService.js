@@ -15,5 +15,8 @@ export default {
  },
  delete(carId){
   return request.delete(`${baseUrl}/${carId}`);
+ },
+ edit(carId, carData){
+  return request.put(`${baseUrl}/${carId}`, {...carData, _id: carId});
  }
 }
