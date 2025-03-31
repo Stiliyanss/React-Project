@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import carService from '../../services/carService';
+import CarCatalogItem from './car-catalog-item/CarCatalogItem';
 
 const Catalog = () => {
 const [cars, setCars] = useState([]);
@@ -8,37 +9,36 @@ const [cars, setCars] = useState([]);
         carService.getAll()
         .then(setCars)
     },[]);
-    console.log(cars);
     
-  const carss = [
-    {
-      id: 1,
-      brand: 'AutoX',
-      model: 'AX-One',
-      horsepower: 320,
-      year: 2021,
-      description: 'A minimalist coupe with futuristic design and electric performance.',
-      image: 'https://images.unsplash.com/photo-1606813901415-63cd65ff0f1c?auto=format&fit=crop&w=800&q=80'
-    },
-    {
-      id: 2,
-      brand: 'AutoX',
-      model: 'Volt-X',
-      horsepower: 410,
-      year: 2023,
-      description: 'Luxury meets sustainability. Volt-X is fully electric with over 500km range.',
-      image: 'https://images.unsplash.com/photo-1621996346565-022b9be8d111?auto=format&fit=crop&w=800&q=80'
-    },
-    {
-      id: 3,
-      brand: 'AutoX',
-      model: 'RoadBlazer',
-      horsepower: 450,
-      year: 2022,
-      description: 'Power and elegance combined into a sport SUV built for thrill and comfort.',
-      image: 'https://images.unsplash.com/photo-1549921296-3a41053a600b?auto=format&fit=crop&w=800&q=80'
-    }
-  ];
+//   const carss = [
+//     {
+//       id: 1,
+//       brand: 'AutoX',
+//       model: 'AX-One',
+//       horsepower: 320,
+//       year: 2021,
+//       description: 'A minimalist coupe with futuristic design and electric performance.',
+//       image: 'https://images.unsplash.com/photo-1606813901415-63cd65ff0f1c?auto=format&fit=crop&w=800&q=80'
+//     },
+//     {
+//       id: 2,
+//       brand: 'AutoX',
+//       model: 'Volt-X',
+//       horsepower: 410,
+//       year: 2023,
+//       description: 'Luxury meets sustainability. Volt-X is fully electric with over 500km range.',
+//       image: 'https://images.unsplash.com/photo-1621996346565-022b9be8d111?auto=format&fit=crop&w=800&q=80'
+//     },
+//     {
+//       id: 3,
+//       brand: 'AutoX',
+//       model: 'RoadBlazer',
+//       horsepower: 450,
+//       year: 2022,
+//       description: 'Power and elegance combined into a sport SUV built for thrill and comfort.',
+//       image: 'https://images.unsplash.com/photo-1549921296-3a41053a600b?auto=format&fit=crop&w=800&q=80'
+//     }
+//   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white px-6 md:px-20 py-20">
@@ -47,7 +47,8 @@ const [cars, setCars] = useState([]);
       </h1>
 
       <div className="grid gap-10 md:grid-cols-3">
-        {carss.map((car) => (
+        {cars.map(car => <CarCatalogItem key={car._id} {...car}/>)}
+        {/* {carss.map((car) => (
           <div key={car.id} className="bg-gray-800 rounded-lg shadow-lg overflow-hidden">
             <img src={car.image} alt={car.model} className="w-full h-48 object-cover" />
             <div className="p-6">
@@ -57,7 +58,7 @@ const [cars, setCars] = useState([]);
               <p className="text-gray-500 text-sm mt-3">{car.description}</p>
             </div>
           </div>
-        ))}
+        ))} */}
       </div>
     </div>
   );
