@@ -7,8 +7,8 @@ export default {
  },
  async getAll() {
   const result = await request.get(baseUrl);
-  const games = Object.values(result);
-  return games; 
+  const cars = Object.values(result);
+  return cars; 
  },
  getOne(carId){
   return request.get(`${baseUrl}/${carId}`);

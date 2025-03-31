@@ -43,7 +43,7 @@ const CarDetails = () => {
         </ul>
 
         <div className="flex justify-end space-x-4">
-          <Link className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-4 py-2 rounded transition">
+          <Link to={`/cars/${carId}/edit`} className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-4 py-2 rounded transition">
             Edit
           </Link>
           <button 
