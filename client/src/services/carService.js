@@ -9,5 +9,8 @@ export default {
   const result = await request.get(baseUrl);
   const games = Object.values(result);
   return games; 
+ },
+ getOne(carId){
+  return request.get(`${baseUrl}/${carId}`);
  }
 }
