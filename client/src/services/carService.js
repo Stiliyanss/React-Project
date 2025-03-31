@@ -12,5 +12,8 @@ export default {
  },
  getOne(carId){
   return request.get(`${baseUrl}/${carId}`);
+ },
+ delete(carId){
+  return request.delete(`${baseUrl}/${carId}`);
  }
 }
