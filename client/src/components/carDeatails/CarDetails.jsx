@@ -3,19 +3,21 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import carService from '../../services/carService';
 import CommentsShow from '../commentsShow/CommentsShow';
 import CommentsCreate from '../commentsCreate/CommentsCreate';
+import commentService from '../../services/commentService';
 
 const CarDetails = ({
   email,
 }) => {
   const navigate = useNavigate();
   const [car, setCar] = useState({});
+  const [comments, setComments]= useState([]);
   const {carId} = useParams();
 
   useEffect(() => {
-    (async () => {
-      const result = await carService.getOne(carId);
-      setCar(result);
-    })(); 
+    carService.getOne(carId)
+      .then(setCar);
+      commentService.getAll(carId)
+      .then(setComments)
   },[carId]);
 
   const carDeleteHandler = async () => {
@@ -27,6 +29,9 @@ const CarDetails = ({
     navigate('/catalog');
   };
 
+  const commentCreateHandler =  (newComment) => {
+    setComments(state=> [...state, newComment]);
+  }
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white px-6 md:px-20 py-24">
       <div className="max-w-3xl mx-auto bg-gray-800 p-8 rounded-lg shadow-lg">
@@ -45,7 +50,7 @@ const CarDetails = ({
           <li><span className="text-white font-semibold">Year:</span> {car.year}</li>
           <li><span className="text-white font-semibold">Description:</span> {car.description}</li>
         </ul>
-        <CommentsShow />
+        <CommentsShow comments={comments}/>
 
         <div className="flex justify-end space-x-4">
           <Link to={`/cars/${carId}/edit`} className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-4 py-2 rounded transition">
@@ -58,7 +63,7 @@ const CarDetails = ({
           </button>
         </div>
       </div>
-      <CommentsCreate email={email} carId={carId}/>
+      <CommentsCreate email={email} carId={carId} onCreate={commentCreateHandler}/>
     </div>
   );
 };
