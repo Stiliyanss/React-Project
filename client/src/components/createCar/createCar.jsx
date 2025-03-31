@@ -1,27 +1,16 @@
-import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import carService from "../../services/carService";
 
 const CreateCar = () => {
-  const [carData, setCarData] = useState({
-    brand: '',
-    model: '',
-    horsepower: '',
-    year: '',
-    description: ''
-  });
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setCarData({
-      ...carData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Car created:', carData);
-    // Here you would send data to a backend or update local state
-    setCarData({ brand: '', model: '', horsepower: '', year: '', description: '' });
-  };
+  const submitAction =async(formData) => {
+    const carData = Object.fromEntries(formData);
+     await carService.create(carData);
+    navigate("/catalog");
+    
+  }
+ 
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white px-6 md:px-20 py-24">
@@ -30,16 +19,15 @@ const CreateCar = () => {
           Create New Car
         </h1>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form className="space-y-6" action={submitAction}>
           <div>
             <label className="block mb-1 text-sm">Brand</label>
             <input
               type="text"
               name="brand"
-              value={carData.brand}
-              onChange={handleChange}
+              id="brand"
               className="w-full px-4 py-2 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="e.g., AutoX"
+              placeholder="Enter car brand..."
               required
             />
           </div>
@@ -49,10 +37,9 @@ const CreateCar = () => {
             <input
               type="text"
               name="model"
-              value={carData.model}
-              onChange={handleChange}
+              id="model"
               className="w-full px-4 py-2 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="e.g., Volt-X"
+              placeholder="Enter car model..."
               required
             />
           </div>
@@ -62,10 +49,9 @@ const CreateCar = () => {
             <input
               type="number"
               name="horsepower"
-              value={carData.horsepower}
-              onChange={handleChange}
+              id="horsepower"
               className="w-full px-4 py-2 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="e.g., 420"
+              placeholder="Enter horsepower..."
               required
             />
           </div>
@@ -75,10 +61,9 @@ const CreateCar = () => {
             <input
               type="number"
               name="year"
-              value={carData.year}
-              onChange={handleChange}
+              id="year"
               className="w-full px-4 py-2 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="e.g., 2023"
+              placeholder="Enter year..."
               required
             />
           </div>
@@ -87,9 +72,7 @@ const CreateCar = () => {
             <label className="block mb-1 text-sm">Description</label>
             <textarea
               name="description"
-              value={carData.description}
-              onChange={handleChange}
-              rows="4"
+              id="description"
               className="w-full px-4 py-2 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Write a short description..."
               required
