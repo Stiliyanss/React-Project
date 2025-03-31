@@ -1,6 +1,8 @@
 import  { useEffect,useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import carService from '../../services/carService';
+import CommentsShow from '../commentsShow/CommentsShow';
+import CommentsCreate from '../commentsCreate/CommentsCreate';
 
 const CarDetails = () => {
   const navigate = useNavigate();
@@ -41,6 +43,7 @@ const CarDetails = () => {
           <li><span className="text-white font-semibold">Year:</span> {car.year}</li>
           <li><span className="text-white font-semibold">Description:</span> {car.description}</li>
         </ul>
+        <CommentsShow />
 
         <div className="flex justify-end space-x-4">
           <Link to={`/cars/${carId}/edit`} className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-4 py-2 rounded transition">
@@ -53,6 +56,7 @@ const CarDetails = () => {
           </button>
         </div>
       </div>
+      <CommentsCreate/>
     </div>
   );
 };
