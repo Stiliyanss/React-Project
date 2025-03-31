@@ -12,6 +12,7 @@ const Header = () => {
         <Link to="/login" className="hover:text-gray-400 transition">Login</Link>
         <Link to="/register" className="hover:text-gray-400 transition">Register</Link>
         <Link to="#" className="hover:text-gray-400 transition">Logout</Link>
+        <Link to="/contact" className="hover:text-gray-400 transition">Contact</Link>
       </nav>
     </header>
   );
