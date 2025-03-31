@@ -58,7 +58,7 @@ const CarDetails = ({
           </button>
         </div>
       </div>
-      <CommentsCreate email={email}/>
+      <CommentsCreate email={email} carId={carId}/>
     </div>
   );
 };
