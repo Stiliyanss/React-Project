@@ -1,10 +1,17 @@
-export default function CommentsCreate() {
+export default function CommentsCreate({email}) {
+const commentAction = (formData) =>{
+  const comment = formData.get('comment');
+  console.log(email);
+  console.log(comment);
+  
+}
+
   return (
     <article className="create-comment bg-gray-900 text-white px-4 md:px-10 py-6 rounded-md shadow-sm mt-6">
       <label className="block text-sm font-medium text-gray-300 mb-2">
         Add new review:
       </label>
-      <form className="form space-y-3">
+      <form className="form space-y-3" action={commentAction}>
         <textarea
           name="comment"
           placeholder="Write your review..."

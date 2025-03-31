@@ -4,7 +4,9 @@ import carService from '../../services/carService';
 import CommentsShow from '../commentsShow/CommentsShow';
 import CommentsCreate from '../commentsCreate/CommentsCreate';
 
-const CarDetails = () => {
+const CarDetails = ({
+  email,
+}) => {
   const navigate = useNavigate();
   const [car, setCar] = useState({});
   const {carId} = useParams();
@@ -56,7 +58,7 @@ const CarDetails = () => {
           </button>
         </div>
       </div>
-      <CommentsCreate/>
+      <CommentsCreate email={email}/>
     </div>
   );
 };
