@@ -1,0 +1,18 @@
+{
+  "ad56fcd8-5ed3-4fc6-9124-16ab1f9be889": {
+        "brand": "AutoX",
+        "model": "S21",
+        "horsepower": "212",
+        "year": "2022",
+        "description": "Our latest model, the S21, is a powerful and efficient car that combines cutting-edge technology with sleek design. With a horsepower of 212, it offers an exhilarating driving experience while maintaining excellent fuel efficiency.",
+        "_id": "ad56fcd8-5ed3-4fc6-9124-16ab1f9be889"
+    },
+    "b55883cd-ea2b-4fa4-b0bb-70290aa308e3": {
+        "brand": "AutoX",
+        "model": "Model S",
+        "horsepower": "333",
+        "year": "2023",
+        "description": "Our first hybrid model",
+        "_id": "b55883cd-ea2b-4fa4-b0bb-70290aa308e3"
+    }
+}
