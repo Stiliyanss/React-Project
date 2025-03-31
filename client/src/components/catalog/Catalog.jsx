@@ -1,5 +1,7 @@
 export default function Catalog() {
-    return(
-        <h1>catalog</h1>
-    );
+        return(
+                <>
+                <h2>catalog</h2>
+                </>
+        );
 }
