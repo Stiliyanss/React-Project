@@ -2,7 +2,7 @@ export default function CommentsShow() {
   return (
     <div className="details-comments bg-gray-900 text-white px-4 md:px-10 py-8 rounded-md shadow-sm">
       <h2 className="text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
-        Comments
+        Reviews
       </h2>
 
       <ul className="space-y-3">
@@ -19,7 +19,7 @@ export default function CommentsShow() {
       </ul>
 
       <p className="no-comment text-center text-gray-500 italic text-sm mt-6">
-        No comments.
+        No reviews.
       </p>
     </div>
   );
