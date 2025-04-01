@@ -1,20 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import request from "../utils/request";
-import { UserContext } from "../contexts/UserContext";
+import useAuth from "../hooks/useAuth";
+
 const baseUrl = "http://localhost:3030/data/cars";
 
-export default {
-  
- getOne(carId){
-  return request.get(`${baseUrl}/${carId}`);
- },
- delete(carId){
-  return request.delete(`${baseUrl}/${carId}`);
- },
- edit(carId, carData){
-  return request.put(`${baseUrl}/${carId}`, {...carData, _id: carId});
- }
-};
 
 export const useCars=()=>{
   const [cars, setCars] = useState([]);
@@ -28,17 +17,15 @@ export const useCars=()=>{
   };
 }
 
+
+
 export const useCreateCar = ()=>{
-  const {accessToken} = useContext(UserContext);
-const options = {
-    headers: {
-      'X-Authorization': accessToken,
-    }
-  };
+  const {request} = useAuth();
+
 
 
   const create = (carData) => {
-    return request.post(baseUrl, carData, options);
+    return request.post(baseUrl, carData);
   }
   return{
     create,  
@@ -51,9 +38,33 @@ export const useCar=(carId)=>{
   useEffect(()=>{
     request.get(`${baseUrl}/${carId}`).then(setCar)
   }, [carId]);
-  
+
   return {
     car,
   };
 
 }
+
+export const useEditCar = ()=>{
+  const {request} = useAuth();
+
+
+  const edit = (carId, carData) => {
+    return request.put(`${baseUrl}/${carId}`, {...carData, _id: carId});
+  }
+  return{
+    edit,  
+  }
+}
+
+export const useDeleteCar = ()=>{
+  const {request} = useAuth();
+
+
+  const deleteCar = (carId) => {
+    return request.delete(`${baseUrl}/${carId}`);
+  }
+  return{
+    deleteCar,  
+  }
+}  

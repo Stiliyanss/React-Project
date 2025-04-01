@@ -1,18 +1,18 @@
-import  { useContext, useEffect,useState } from 'react';
+import  {  useEffect,useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import carService from '../../services/carService';
 import CommentsShow from '../commentsShow/CommentsShow';
 import CommentsCreate from '../commentsCreate/CommentsCreate';
 import commentService from '../../services/commentService';
-import { UserContext } from '../../contexts/UserContext';
-import { useCar } from '../../api/carApi';
+import { useCar, useDeleteCar } from '../../api/carApi';
+import useAuth from '../../hooks/useAuth';
 
 const CarDetails = () => {
   const navigate = useNavigate();
-  const {email} = useContext(UserContext);
+  const {email} = useAuth();
   const [comments, setComments]= useState([]);
   const {carId} = useParams();
   const {car} = useCar(carId);
+  const {deleteCar} = useDeleteCar();
 
   useEffect(() => {  
       commentService.getAll(carId)
@@ -24,7 +24,8 @@ const CarDetails = () => {
     if(!hasConfirm){
       return;
     }
-    await carService.delete(carId);
+
+    await deleteCar(carId);
     navigate('/catalog');
   };
 

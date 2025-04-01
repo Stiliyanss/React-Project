@@ -1,22 +1,18 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import carService from "../../services/carService";
+import { useCar, useEditCar } from "../../api/carApi";
 
 export default function CarEdit() {
   const navigate = useNavigate();
 const {carId} = useParams();
-const [car, setCar] = useState({}); 
+const {car} = useCar(carId); 
+const {edit} = useEditCar()
 
-useEffect(() => {
-  carService.getOne(carId)
-  .then(setCar); 
-},[carId]);
 
 const formAction= async (formData)=>{
   const carData = Object.fromEntries(formData);
 
-  await carService.edit(carId, carData);
+  await edit(carId, carData);
   navigate(`/cars/${carId}/details`);
 }
 
