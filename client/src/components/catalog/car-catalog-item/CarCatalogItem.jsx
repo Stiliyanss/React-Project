@@ -7,12 +7,13 @@ export default function CarCatalogItem({
   horsepower,
   year,
   description,
+  imageUrl,
   _id
 }) {
   return (
     <div className="bg-gray-800 rounded-lg shadow-lg overflow-hidden flex flex-col h-full">
       <img
-        src="https://images.unsplash.com/photo-1606813901415-63cd65ff0f1c?auto=format&fit=crop&w=800&q=80"
+        src={imageUrl}
         alt={model}
         className="w-full h-48 object-cover"
       />

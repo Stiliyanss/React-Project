@@ -48,6 +48,18 @@ const CreateCar = () => {
           </div>
 
           <div>
+            <label className="block mb-1 text-sm">Image URL</label>
+            <input
+              type="text"
+              name="imageUrl"
+              id="imageUrl"
+              className="w-full px-4 py-2 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter image URL..."
+              required
+            />
+          </div>
+
+          <div>
             <label className="block mb-1 text-sm">Horsepower</label>
             <input
               type="number"

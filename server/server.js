@@ -1657,6 +1657,7 @@
                 "horsepower": "112",
                 "year": "2012",
                 "description": "mitakas car",
+                "imageUrl": "https://cdn.pixabay.com/photo/2016/11/29/04/17/bmw-1868726_1280.jpg",
                 "_id": "d166a40f-0d6a-4303-863c-850d5939d589",
                 "_createdOn": 1743519049915,
                 "_ownerId": "6369960d-7920-4445-beb9-b74e2367504b",

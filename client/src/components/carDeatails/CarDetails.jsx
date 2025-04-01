@@ -39,7 +39,7 @@ const CarDetails = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white px-6 md:px-20 py-24">
       <div className="max-w-3xl mx-auto bg-gray-800 p-8 rounded-lg shadow-lg">
         <img
-          src="https://images.unsplash.com/photo-1606813901415-63cd65ff0f1c?auto=format&fit=crop&w=800&q=80"
+          src={car.imageUrl}
           alt="Car"
           className="w-full h-64 object-cover rounded-md mb-8"
         />
