@@ -4,14 +4,7 @@ import { UserContext } from "../contexts/UserContext";
 const baseUrl = "http://localhost:3030/data/cars";
 
 export default {
-  create(carData) {
-  return request.post(baseUrl, carData);
- },
- async getAll() {
-  const result = await request.get(baseUrl);
-  const cars = Object.values(result);
-  return cars; 
- },
+  
  getOne(carId){
   return request.get(`${baseUrl}/${carId}`);
  },
@@ -50,4 +43,17 @@ const options = {
   return{
     create,  
   }
+}
+
+export const useCar=(carId)=>{
+  const [car, setCar] = useState({});
+
+  useEffect(()=>{
+    request.get(`${baseUrl}/${carId}`).then(setCar)
+  }, [carId]);
+  
+  return {
+    car,
+  };
+
 }

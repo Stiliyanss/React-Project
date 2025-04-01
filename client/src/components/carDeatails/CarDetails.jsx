@@ -5,17 +5,16 @@ import CommentsShow from '../commentsShow/CommentsShow';
 import CommentsCreate from '../commentsCreate/CommentsCreate';
 import commentService from '../../services/commentService';
 import { UserContext } from '../../contexts/UserContext';
+import { useCar } from '../../api/carApi';
 
 const CarDetails = () => {
   const navigate = useNavigate();
   const {email} = useContext(UserContext);
-  const [car, setCar] = useState({});
   const [comments, setComments]= useState([]);
   const {carId} = useParams();
+  const {car} = useCar(carId);
 
-  useEffect(() => {
-    carService.getOne(carId)
-      .then(setCar);
+  useEffect(() => {  
       commentService.getAll(carId)
       .then(setComments)
   },[carId]);
