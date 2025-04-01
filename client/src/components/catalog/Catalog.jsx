@@ -1,15 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import carService from '../../services/carService';
+
 import CarCatalogItem from './car-catalog-item/CarCatalogItem';
+import { useCars } from '../../api/carApi';
 
 const Catalog = () => {
-const [cars, setCars] = useState([]);
-
-    useEffect(() => {
-        carService.getAll()
-        .then(setCars)
-    },[]);
-    
+const {cars} = useCars();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white px-6 md:px-20 py-20">

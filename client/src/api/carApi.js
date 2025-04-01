@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import request from "../utils/request";
 import { UserContext } from "../contexts/UserContext";
 const baseUrl = "http://localhost:3030/data/cars";
@@ -22,6 +22,18 @@ export default {
   return request.put(`${baseUrl}/${carId}`, {...carData, _id: carId});
  }
 };
+
+export const useCars=()=>{
+  const [cars, setCars] = useState([]);
+
+  useEffect(() => {
+    request.get(baseUrl).then(setCars)
+  }, []);
+
+  return {
+    cars,
+  };
+}
 
 export const useCreateCar = ()=>{
   const {accessToken} = useContext(UserContext);
