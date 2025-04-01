@@ -1,22 +1,26 @@
-import React, { useActionState } from 'react';
+import React, {  useActionState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { useLogin } from '../../api/authApi';
 
 const Login = ({
   onLogin,
 }) => {
 
   const navigate = useNavigate();
+  const { login } = useLogin();
 
-   const loginHandler = (previousState, formData) => {
+   const loginHandler = async(_ , formData) => {
     const values = Object.fromEntries(formData);
-    onLogin(values.email);
-    navigate('/catalog');
-    return values;  
-  }
-  const [values, loginAction, isPending] = useActionState(loginHandler, {email: '', password: ''});
+    
+    const authData = await login(values.email, values.password);
+    
+    onLogin(authData);
 
-console.log(values);
+    navigate('/catalog');
+  }
+  const [_, loginAction, isPending] = useActionState(loginHandler, {email: '', password: ''});
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white px-4">
