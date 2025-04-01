@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
+import { UserContext } from './contexts/UserContext';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 
@@ -20,6 +21,7 @@ function App() {
     setAuthData(resultData); 
   }
   return (
+    <UserContext.Provider value={{...authData, userLoginHandler}}> 
     <Router>
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white font-sans">
         <Header />
@@ -28,9 +30,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/catalog" element={<Catalog />} />
           <Route path='/create' element={<CreateCar />} />
-          <Route path='/cars/:carId/details' element={<CarDetails email={authData.email} />}/>
+          <Route path='/cars/:carId/details' element={<CarDetails />}/>
           <Route path="/cars/:carId/edit" element={<CarEdit />} />     
-          <Route path="/login" element={<Login onLogin={userLoginHandler}/>} />
+          <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Register />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
@@ -39,6 +41,7 @@ function App() {
         <Footer />
       </div>
     </Router>
+    </UserContext.Provider>
   );
 }
 

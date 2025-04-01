@@ -1,14 +1,14 @@
-import  { useEffect,useState } from 'react';
+import  { useContext, useEffect,useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import carService from '../../services/carService';
 import CommentsShow from '../commentsShow/CommentsShow';
 import CommentsCreate from '../commentsCreate/CommentsCreate';
 import commentService from '../../services/commentService';
+import { UserContext } from '../../contexts/UserContext';
 
-const CarDetails = ({
-  email,
-}) => {
+const CarDetails = () => {
   const navigate = useNavigate();
+  const {email} = useContext(UserContext);
   const [car, setCar] = useState({});
   const [comments, setComments]= useState([]);
   const {carId} = useParams();

@@ -1,21 +1,21 @@
-import React, {  useActionState } from 'react';
+import  {  useActionState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useLogin } from '../../api/authApi';
+import { UserContext } from '../../contexts/UserContext';
 
-const Login = ({
-  onLogin,
-}) => {
+const Login = () => {
 
   const navigate = useNavigate();
+  const {userLoginHandler} = useContext(UserContext);
   const { login } = useLogin();
 
    const loginHandler = async(_ , formData) => {
     const values = Object.fromEntries(formData);
-    
+
     const authData = await login(values.email, values.password);
     
-    onLogin(authData);
+    userLoginHandler(authData);
 
     navigate('/catalog');
   }
