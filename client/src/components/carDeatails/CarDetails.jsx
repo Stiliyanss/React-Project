@@ -8,7 +8,7 @@ import useAuth from '../../hooks/useAuth';
 
 const CarDetails = () => {
   const navigate = useNavigate();
-  const {email} = useAuth();
+  const {email, _id: userId} = useAuth();
   const [comments, setComments]= useState([]);
   const {carId} = useParams();
   const {car} = useCar(carId);
@@ -29,9 +29,12 @@ const CarDetails = () => {
     navigate('/catalog');
   };
 
-  const commentCreateHandler =  (newComment) => {
+  const commentCreateHandler =  (newComment) => { 
     setComments(state=> [...state, newComment]);
   }
+
+  const isOwner = userId === car._ownerId;
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white px-6 md:px-20 py-24">
       <div className="max-w-3xl mx-auto bg-gray-800 p-8 rounded-lg shadow-lg">
@@ -51,8 +54,8 @@ const CarDetails = () => {
           <li><span className="text-white font-semibold">Description:</span> {car.description}</li>
         </ul>
         <CommentsShow comments={comments}/>
-
-        <div className="flex justify-end space-x-4">
+    {isOwner &&(
+       <div className="flex justify-end space-x-4">
           <Link to={`/cars/${carId}/edit`} className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-4 py-2 rounded transition">
             Edit
           </Link>
@@ -61,7 +64,8 @@ const CarDetails = () => {
           className="bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded transition">
             Delete
           </button>
-        </div>
+        </div>)}
+        
       </div>
       <CommentsCreate email={email} carId={carId} onCreate={commentCreateHandler}/>
     </div>
