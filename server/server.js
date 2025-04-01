@@ -1649,7 +1649,20 @@
     			_createdOn: 1616237272948,
     			_updatedOn: 1616237293676
     		}
-    	}
+    	},
+        cars: [
+            {
+                "brand": "AutoX",
+                "model": "Model mitaka",
+                "horsepower": "112",
+                "year": "2012",
+                "description": "mitakas car",
+                "_id": "d166a40f-0d6a-4303-863c-850d5939d589",
+                "_createdOn": 1743519049915,
+                "_ownerId": "6369960d-7920-4445-beb9-b74e2367504b",
+                "_updatedOn": 1743519057513
+            }
+        ]
     };
     var rules$1 = {
     	users: {
