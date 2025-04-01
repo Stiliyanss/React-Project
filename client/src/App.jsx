@@ -14,6 +14,7 @@ import Contact from './components/contact/Contact';
 import CreateCar from './components/createCar/CreateCar';
 import CarDetails from './components/carDeatails/CarDetails';
 import CarEdit from './components/carEdit/CarEdit';
+import Logout from './components/logout/logout';
 
 function App() {
   const [authData, setAuthData] = useState({});
@@ -36,6 +37,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
+          <Route path="/logout" element={<Logout/>}/>
         </Routes>
 
         <Footer />

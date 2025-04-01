@@ -8,6 +8,7 @@
       ...options,
       headers: {
         'Content-Type': 'application/json',
+        ...options.headers,
       },
       body: JSON.stringify(data), 
     }
