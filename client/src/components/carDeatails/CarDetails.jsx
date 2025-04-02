@@ -53,7 +53,9 @@ const CarDetails = () => {
           <li><span className="text-white font-semibold">Year:</span> {car.year}</li>
           <li><span className="text-white font-semibold">Description:</span> {car.description}</li>
         </ul>
-        <CommentsShow comments={comments}/>
+        <div className='mb-6'>
+        <CommentsShow comments={comments} />
+        </div>  
     {isOwner &&(
        <div className="flex justify-end space-x-4">
           <Link to={`/cars/${carId}/edit`} className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-4 py-2 rounded transition">
