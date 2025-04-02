@@ -15,9 +15,10 @@ import CreateCar from './components/createCar/CreateCar';
 import CarDetails from './components/carDeatails/CarDetails';
 import CarEdit from './components/carEdit/CarEdit';
 import Logout from './components/logout/logout';
+import useLocalStorage from './hooks/useLocalStorage';
 
 function App() {
-  const [authData, setAuthData] = useState({});
+  const [authData, setAuthData] = useLocalStorage('auth',{});
   const userLoginHandler = (resultData) => {
     setAuthData(resultData); 
   }
