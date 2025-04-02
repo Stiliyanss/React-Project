@@ -8,7 +8,7 @@ export default function CommentsShow({comments}) {
       <ul className="space-y-3">
         {comments.length > 0 ? comments.map(({_id,email,comment}) => ( <li key={_id} className="comment bg-gray-800 border border-gray-700 p-2 rounded shadow-sm">
           <p className="text-gray-300 text-sm">
-            <span className="font-medium text-white">{email}:</span> {comment}
+            <span className="font-medium text-white">{email? email : 'unknown'}:</span> {comment}
           </p>
         </li>)) : (  <p className="no-comment text-center text-gray-500 italic text-sm mt-6">
         No reviews.
