@@ -1,6 +1,5 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
 import { UserContext } from './contexts/UserContext';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
@@ -16,6 +15,7 @@ import CarDetails from './components/carDeatails/CarDetails';
 import CarEdit from './components/carEdit/CarEdit';
 import Logout from './components/logout/logout';
 import useLocalStorage from './hooks/useLocalStorage';
+import AuthGuard from './components/guards/AuthGuard';
 
 function App() {
   const [authData, setAuthData] = useLocalStorage('auth',{});
@@ -35,14 +35,19 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/catalog" element={<Catalog />} />
-          <Route path='/create' element={<CreateCar />} />
-          <Route path='/cars/:carId/details' element={<CarDetails />}/>
-          <Route path="/cars/:carId/edit" element={<CarEdit />} />     
+
+          <Route  element={<AuthGuard/>}>
+              <Route path='/create' element={<CreateCar />} />
+              <Route path="/cars/:carId/edit" element={<CarEdit />} />
+              <Route path="/logout" element={<Logout/>}/>
+          </Route>
+
+          <Route path='/cars/:carId/details' element={<CarDetails />}/>            
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Register />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
-          <Route path="/logout" element={<Logout/>}/>
+          
         </Routes>
 
         <Footer />
