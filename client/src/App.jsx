@@ -16,6 +16,7 @@ import CarEdit from './components/carEdit/CarEdit';
 import Logout from './components/logout/logout';
 import useLocalStorage from './hooks/useLocalStorage';
 import AuthGuard from './components/guards/AuthGuard';
+import GuestGuard from './components/guards/GuestGuard';
 
 function App() {
   const [authData, setAuthData] = useLocalStorage('auth',{});
@@ -42,9 +43,13 @@ function App() {
               <Route path="/logout" element={<Logout/>}/>
           </Route>
 
-          <Route path='/cars/:carId/details' element={<CarDetails />}/>            
+          <Route path='/cars/:carId/details' element={<CarDetails />}/>    
+
+        <Route element={<GuestGuard/>}>
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Register />} />
+        </Route>
+        
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
           
