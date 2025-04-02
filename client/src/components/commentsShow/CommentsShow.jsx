@@ -1,3 +1,5 @@
+import './CommentsShow.css';
+
 export default function CommentsShow({comments}) {
   return (
     <div className="details-comments bg-gray-900 text-white px-4 md:px-10 py-8 rounded-md shadow-sm">
