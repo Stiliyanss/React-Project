@@ -7,7 +7,7 @@ AutoX is a dynamic React-based web application for car enthusiasts. Users can cr
 - 🔐 **Authentication** – Secure login and registration system
 - 🛠️ **Create/Edit/Delete Cars** – Full CRUD functionality for managing car entries
 - 📦 **Catalog** – View all user-created cars in a browsable interface
-- 💬 **Comments** – Interact with other users by leaving comments on cars
+- 💬 **Comments** – Interact with other users by leaving comments on cars 
 - 🎨 **Responsive UI** – Built with TailwindCSS for a clean and modern look
 
 ## 🧱 Tech Stack
@@ -56,3 +56,6 @@ npm run dev
 ├── .gitignore
 ├── README.md
 └── .gitattributes
+
+
+Made with ❤️ by Stiliyanss
